@@ -82,7 +82,7 @@
                         <div class="modal-footer">
                             <input type="hidden" id="hiddenUserId" name="hiddenUserId">
                             <button type="button" class="btn btn-default" data-dismiss="modal" onclick="limpiarForm()">Cancelar</button>
-                            <button type="button" class="btn btn-primary" onclick="saveUser()">Registrar</button>
+                            <button type="submit" class="btn btn-primary" id="btnSave">Registrar</button>
                         </div>
                     </form>
                 </div>

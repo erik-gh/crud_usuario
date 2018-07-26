@@ -1,21 +1,37 @@
 var tabla;
-function saveUser() {
-    var dataform = new FormData($('#form_user')[0]);
-    $.ajax({
-        url: "../controllers/Usuario.controller.php?opt=saveUser",
-        type: "POST",
-        data: dataform,
-        contentType: false,
-        processData: false,
-        success: function (resp) {
-            // close the popup
-            $("#modalUser").modal("hide");
-            // clear fields from the popup
-            limpiarForm();
-            // read records again
-            tabla.ajax.reload();
-        }
-    });
+function saveUser(e) {
+    e.preventDefault();
+//    var data = new FormData($('#form_user')[0]);
+    var data = $('#form_user').serializeArray();
+    //data.push({name: 'edad', value:18});
+    //var data = $('#form_user').serialize();
+    console.log(data);
+    $.post("../controllers/Usuario.controller.php?opt=saveUser", data,
+            function () {
+                $("#modalUser").modal("hide");
+                // clear fields from the popup
+                limpiarForm();
+                // read records again
+                tabla.ajax.reload();
+            });
+    /*
+     $.ajax({
+     url: "../controllers/Usuario.controller.php?opt=saveUser",
+     type: "POST",
+     // dataType: "json",
+     data: data,
+     //contentType: false,
+     //processData: false,
+     success: function () {
+     // close the popup
+     $("#modalUser").modal("hide");
+     // clear fields from the popup
+     limpiarForm();
+     // read records again
+     tabla.ajax.reload();
+     }
+     });
+     */
 }
 
 function readRecords() {
@@ -27,7 +43,7 @@ function readRecords() {
 }
 
 function getUserDetails(id) {
-    // Add User ID to the hidden field
+// Add User ID to the hidden field
     $("#hiddenUserId").val(id);
     // console.log(id);
     $.post("../controllers/Usuario.controller.php?opt=detailsUser", {hiddenUserId: id},
@@ -62,7 +78,11 @@ function limpiarForm() {
     $("#hiddenUserId").val("");
 }
 $(document).ready(function () {
-    // READ records on page load
+// READ records on page load
     readRecords(); // calling function
+    // Para guardar y actualizar los datos
+    $('#form_user').on("submit", function (e) {
+        saveUser(e);
+    });
 });
 
