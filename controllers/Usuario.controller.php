@@ -4,8 +4,8 @@
 require_once '../models/Usuario.model.php';
 
 $objUsuario = new UsuarioModel();
-
-$idUser = !empty($_POST['hiddenUserId']) ? $_POST['hiddenUserId'] : null;
+// si me da cadena vacia se usa el empty
+$idUser = (!empty($_POST['hiddenUserId'])) ? $_POST['hiddenUserId'] : null;
 
 switch ($_GET["opt"]) {
 

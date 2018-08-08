@@ -6,10 +6,12 @@
         <title>CRUD-PHP-PDO-MVC</title>
 
         <!-- Bootstrap CSS File -->
-        <link rel="stylesheet" type="text/css" href="../public/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css"
+              href="../public/css/bootstrap.min.css">
         <!-- DataTable CSS File -->
-        <link rel="stylesheet" type="text/css" href="../public/datatables/jquery.dataTables.min.css">
-         <!--<link rel="stylesheet" type="text/css" href="../public/css/datatables.min.css">--> 
+        <link rel="stylesheet" type="text/css"
+              href="../public/datatables/jquery.dataTables.min.css">
+        <!--<link rel="stylesheet" type="text/css" href="../public/css/datatables.min.css">-->
 
         <!-- Jquery JS File -->
         <script type="text/javascript" src="../public/js/jquery-3.1.1.min.js"></script>
@@ -25,29 +27,44 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1> CRUD USUARIO - MVC - PHP - PDO  - DATATABLE </h1>
+                    <h1>CRUD USUARIO - MVC - PHP - PDO - DATATABLE</h1>
                 </div>
-                    
+
             </div>
             <div class="row">
-                    <div class="pull-right">
-                        <button class="btn btn-success" data-toggle="modal" data-target="#modalUser">Modal Usuario</button>
-                    </div>
+                <div class="pull-right">
+                    <button class="btn btn-success" data-toggle="modal"
+                            data-target="#modalUser">Modal Usuario</button>
+                </div>
             </div>
             <div class="row">
-                <h3> Registros : </h3>
+                <h3>Registros :</h3>
                 <div class="panel-body" id="listadoRegistros">
-                    <!--<table id="tblListado" class="table table-striped table-condensed table-bordered table-hover">-->
+                        <!--<table id="tblListado" class="table table-striped table-condensed table-bordered table-hover">-->
                     <table id="tblListado" class="table table-hover">
                         <thead>
-                        <th>#</th>
-                        <th>Firts Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>
-                        <th>Actualizar</th>
-                        <th>Eliminar</th>
+                            <tr>
+                                <th>#</th>
+                                <th>Firts Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+<!--                                <th>Fecha Ingreso</th>-->
+                                <th>Actualizar</th>
+                                <th>Eliminar</th>
+                            </tr>
                         </thead>
                         <tbody></tbody>
+                        <tfoot>
+                            <tr>
+                                <th>#</th>
+                                <th>Firts Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                                <!--<th>Fecha Ingreso</th>-->
+                                <th>Actualizar</th>
+                                <th>Eliminar</th>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>
@@ -55,33 +72,33 @@
         <!-- /Content Section -->
 
         <!-- Bootstrap Modal -->
-
         <!-- Modal Nuevo Usuario -->
         <div class="modal fade" id="modalUser" tabindex="-1" role="dialog">
             <div class="modal-dialog" role=document>
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <button type="button" class="close" data-dismiss="modal"
+                                aria-label="Close" onclick="limpiarForm()">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                         <h4 class="modal-title">Modal Usuario</h4>
                     </div>
                     <form name="form_user" id="form_user">
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="first_name">First Name</label>
-                                <input type="text" class="form-control" id="first_name" name="first_name">
+                                <label for="first_name">First Name</label> <input type="text" class="form-control" id="first_name" name="first_name">
                             </div>
                             <div class="form-group">
-                                <label for="last_name">Last Name</label>
-                                <input type="text" class="form-control" id="last_name" name="last_name">
+                                <label for="last_name">Last Name</label> <input type="text" class="form-control" id="last_name" name="last_name">
                             </div>
                             <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="text" class="form-control" id="email" name="email">
+                                <label for="email">Email</label> <input type="text" class="form-control" id="email" name="email">
                             </div>
                         </div>
                         <div class="modal-footer">
                             <input type="hidden" id="hiddenUserId" name="hiddenUserId">
-                            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="limpiarForm()">Cancelar</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"
+                                    onclick="limpiarForm()">Cancelar</button>
                             <button type="submit" class="btn btn-primary" id="btnSave">Registrar</button>
                         </div>
                     </form>
